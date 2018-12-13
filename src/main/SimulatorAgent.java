@@ -146,8 +146,11 @@ public class SimulatorAgent extends Agent {
 			FileOutputStream generalCsv;
 			try {
 				generalCsv = new FileOutputStream(new File(genericCSV));
+				// item, sellerName, sellerDelay, average, variance, initialValue, percentualDif, avgMaxPrice, 
+				// avgShipDel, itemAuctions, itemInterest, priceSold, sold or not	
 				generalCsv.write(("Item, Seller, Shipment Delay, Average, Variance, "
-						+ "Initial Value, Diff of initial price with avg price, Diff of avg able to spend on product with avg price of product, Same item auctions, Interested buyers, Sold Value, Sold?\n").getBytes());
+						+ "Initial Value, Diff of initial price with avg price, Diff of avg able to spend on product with avg price of product, "
+						+ "Diff of shipment delay with average shipment delay, Same item auctions, Interested buyers, Sold Value, Sold?\n").getBytes());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -274,7 +277,14 @@ public class SimulatorAgent extends Agent {
 			}
 			
 			public Float getSellersShipDelAvg(String itemName) {
-				return 0f;
+				float shipDelTotal = 0, sellers = 0;
+				for(String[] entry: tableEntry) {
+					if(entry[0].equals(itemName)) {
+						shipDelTotal += Integer.parseInt(entry[2]);
+						sellers++;
+					}
+				}
+				return (sellers != 0 ? shipDelTotal/sellers : 0);
 			}
 
 			@Override
@@ -282,8 +292,6 @@ public class SimulatorAgent extends Agent {
 				try {
 					//FileOutputStream csvOut = new FileOutputStream(new File(csvPath + simulationNumber + ".csv"));
 					FileOutputStream generalCsv = new FileOutputStream(new File(genericCSV), true);
-					// item, sellerName, sellerDelay, average, variance, initialValue, percentualDif, avgMagPrice, avgShipDel, itemAuctions,
-					// itemInterest, priceSold (-1 if not sold)
 					for (String[] entry : tableEntry) {
 
 						Float soldFor = -1f;
@@ -300,11 +308,22 @@ public class SimulatorAgent extends Agent {
 						
 						Float percentualDif =  (new Float(entry[5])/new Float(entry[3])) - 1; 
 						Float avgMaxPrice = (getBuyersMaxValAvg(entry[0])/new Float(entry[5])) - 1;
-						Float avgShipDel = (getSellersShipDelAvg(entry[0])/new Float(entry[2])) - 1;
 						
+						
+						Float percentualShipDelDif = 0f;
+						Float avgShipDel = getSellersShipDelAvg(entry[0]);
+						if(Float.parseFloat(entry[2]) == 0f) {
+							percentualShipDelDif = 1f; //high value? should be infinity? (division by 0)
+						}
+						else {
+							percentualShipDelDif = (avgShipDel / new Float(entry[2])) - 1;
+						}
+						
+						// item, sellerName, sellerDelay, average, variance, initialValue, percentualDif, avgMaxPrice, 
+						// avgShipDel, itemAuctions, itemInterest, priceSold, sold or not						
 						byte[] strBytes = (entry[0] + ", " + entry[1] + ", " + entry[2] + ", " + entry[3] + ", "
 								+ entry[4] + ", " + entry[5] + ", " + percentualDif + ", " + avgMaxPrice + ", " + 
-								avgShipDel + ", " + itemAuctions.get(entry[0]) + ", "
+								percentualShipDelDif + ", " + itemAuctions.get(entry[0]) + ", "
 								+ interest + ", " + soldFor + ", " + sold + "\n").getBytes();
 						
 						generalCsv.write(strBytes);
