@@ -309,16 +309,9 @@ public class SimulatorAgent extends Agent {
 						Float percentualDif =  (new Float(entry[5])/new Float(entry[3])) - 1; 
 						Float avgMaxPrice = (getBuyersMaxValAvg(entry[0])/new Float(entry[5])) - 1;
 						
-						
-						Float percentualShipDelDif = 0f;
-						Float avgShipDel = getSellersShipDelAvg(entry[0]);
-						if(Float.parseFloat(entry[2]) == 0f) {
-							percentualShipDelDif = 0f; //division by 0
-						}
-						else {
-							percentualShipDelDif = (avgShipDel / new Float(entry[2])) - 1;
-						}
-						
+						//must be replaced in rapid miner if needed
+						Float percentualShipDelDif = (getSellersShipDelAvg(entry[0])/ new Float(entry[2])) - 1;
+								
 						// item, sellerName, sellerDelay, average, variance, initialValue, percentualDif, avgMaxPrice, 
 						// avgShipDel, itemAuctions, itemInterest, priceSold, sold or not						
 						byte[] strBytes = (entry[0] + ", " + entry[1] + ", " + entry[2] + ", " + entry[3] + ", "
