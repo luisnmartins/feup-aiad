@@ -258,7 +258,7 @@ public class SimulatorAgent extends Agent {
 				finished = (messagesToReceive == messagesReceived);
 			}
 			
-			public Float getMaxAvg(String itemName) {
+			public Float getBuyersMaxValAvg(String itemName) {
 				ArrayList<Float> itemsPrices = this.avgAbleToSpend.get(itemName);
 				Float sum = 0f;
 				
@@ -272,13 +272,17 @@ public class SimulatorAgent extends Agent {
 				
 				return (num != 0 ? sum/num : 0);
 			}
+			
+			public Float getSellersShipDelAvg(String itemName) {
+				return 0f;
+			}
 
 			@Override
 			public int onEnd() {
 				try {
 					//FileOutputStream csvOut = new FileOutputStream(new File(csvPath + simulationNumber + ".csv"));
 					FileOutputStream generalCsv = new FileOutputStream(new File(genericCSV), true);
-					// item, sellerName, sellerDelay, average, variance, initialValue, itemAuctions,
+					// item, sellerName, sellerDelay, average, variance, initialValue, percentualDif, avgMagPrice, avgShipDel, itemAuctions,
 					// itemInterest, priceSold (-1 if not sold)
 					for (String[] entry : tableEntry) {
 
@@ -295,10 +299,12 @@ public class SimulatorAgent extends Agent {
 							interest = itemInterest.get(entry[0]);
 						
 						Float percentualDif =  (new Float(entry[5])/new Float(entry[3])) - 1; 
-						Float avgMaxPrice = (getMaxAvg(entry[0])/new Float(entry[5])) - 1;
+						Float avgMaxPrice = (getBuyersMaxValAvg(entry[0])/new Float(entry[5])) - 1;
+						Float avgShipDel = (getSellersShipDelAvg(entry[0])/new Float(entry[2])) - 1;
 						
 						byte[] strBytes = (entry[0] + ", " + entry[1] + ", " + entry[2] + ", " + entry[3] + ", "
-								+ entry[4] + ", " + entry[5] + ", " + percentualDif + ", " + avgMaxPrice + ", " + itemAuctions.get(entry[0]) + ", "
+								+ entry[4] + ", " + entry[5] + ", " + percentualDif + ", " + avgMaxPrice + ", " + 
+								avgShipDel + ", " + itemAuctions.get(entry[0]) + ", "
 								+ interest + ", " + soldFor + ", " + sold + "\n").getBytes();
 						
 						generalCsv.write(strBytes);
