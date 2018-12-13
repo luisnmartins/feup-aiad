@@ -313,7 +313,7 @@ public class SimulatorAgent extends Agent {
 						Float percentualShipDelDif = 0f;
 						Float avgShipDel = getSellersShipDelAvg(entry[0]);
 						if(Float.parseFloat(entry[2]) == 0f) {
-							percentualShipDelDif = 1f; //high value? should be infinity? (division by 0)
+							percentualShipDelDif = 0f; //division by 0
 						}
 						else {
 							percentualShipDelDif = (avgShipDel / new Float(entry[2])) - 1;
