@@ -16,7 +16,7 @@ Existe um agente BidKeeper responsável por gerir os leilões já terminados e a
 
 O cliente mantém-se no sistema até conseguir comprar todos os produtos que pretende ou até atingir o tempo limite determinado ou ficar sem orçamento.
 
-Toda a explicação e resultados desta análise pode ser consultada em https://github.com/luisnmartins/feup-aiad/projeto1/relatorio.pdf
+Toda a explicação e resultados desta análise pode ser consultada em https://github.com/luisnmartins/feup-aiad/blob/master/projeto%201/relatorio.pdf
 
 ##Projeto 2
 
@@ -27,4 +27,4 @@ Foram implementados 2 processos:
 
 * regressão: Prevê o valor pelo qual um produto é vendido
 
-Toda a explicação e resultados desta análise pode ser consultada em https://github.com/luisnmartins/feup-aiad/projeto2/relatorio.pdf
+Toda a explicação e resultados desta análise pode ser consultada em https://github.com/luisnmartins/feup-aiad/blob/master/projeto%202/relatorio.pdf
