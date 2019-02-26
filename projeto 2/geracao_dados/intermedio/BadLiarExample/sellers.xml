@@ -1,0 +1,39 @@
+<market>  
+    <seller name="Conde" shipmentDelay="15">
+        <bid>
+            <item price="150">Guitarra</item>
+            <delivery>3</delivery>
+            <increase>25</increase>
+        </bid>
+        
+        <bid>
+            <item price="550.5">Violino</item>
+            <delivery>6</delivery>
+            <increase>35</increase>
+        </bid>
+
+        <bid>
+            <item price="35.5">Flauta</item>
+            <delivery>6</delivery>
+            <increase>6</increase>
+        </bid>
+        
+    </seller>
+ 
+    <seller name="Beatriz" shipmentDelay="0">
+        <bid>
+            <item price="300">Guitarra</item>
+            <delivery>3</delivery>
+            <increase>25</increase>
+        </bid>
+        
+        <bid>
+            <item price="550.5">Violino</item>
+            <delivery>6</delivery>
+            <increase>50</increase>
+        </bid>
+        
+       
+        
+    </seller>
+</market>

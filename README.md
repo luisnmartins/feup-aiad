@@ -1,5 +1,7 @@
 # Description
 
+##Projeto 1
+
 No cenário em questão, um ou mais compradores possuem uma lista de produtos que pretendem comprar. Simultaneamente, vários vendedores anunciarão a venda de diversos produtos.
 
 Cada vendedor fixa um preço mínimo para cada produto que vende, sendo este o valor inicial do produto em leilão (English auction). O mesmo produto, oferecido por diferentes vendedores, pode ter preços diferentes.
@@ -13,3 +15,16 @@ Sempre que um vendedor entra no sistema informa o InformationSystemAgent, que é
 Existe um agente BidKeeper responsável por gerir os leilões já terminados e ainda não pagos. Este agente é importante para que se assegure que um leilão já terminado seja efetivamente completado. De facto, um comprador pode licitar em vários leilões ao mesmo tempo e, caso ganhe mais do que um leilão do mesmo produto, pode abdicar de um deles. O BidKeeper tem um tempo máximo para manter os leilões terminados mas ainda não pagos. Após esse período, o leilão é considerado não liquidado e o vendedor poderá iniciar novamente a venda do produto, reiniciando o leilão.
 
 O cliente mantém-se no sistema até conseguir comprar todos os produtos que pretende ou até atingir o tempo limite determinado ou ficar sem orçamento.
+
+Toda a explicação e resultados desta análise pode ser consultada em https://github.com/luisnmartins/feup-aiad/projeto1/relatorio.pdf
+
+##Projeto 2
+
+Para o segundo projeto foram gerados dados e feita uma análise à capacidade de previsão de diferentes modelos de data mining  baseando-se num dataset de aproximadamente 61000 linhas de dados de execução.
+
+Foram implementados 2 processos:
+* classificação: Prevê se um produto é ou não vendido tendo em conta as variáveis analisadas
+
+* regressão: Prevê o valor pelo qual um produto é vendido
+
+Toda a explicação e resultados desta análise pode ser consultada em https://github.com/luisnmartins/feup-aiad/projeto2/relatorio.pdf
