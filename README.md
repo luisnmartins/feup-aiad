@@ -1,6 +1,6 @@
 # Description
 
-##Projeto 1
+## Projeto 1
 
 No cenário em questão, um ou mais compradores possuem uma lista de produtos que pretendem comprar. Simultaneamente, vários vendedores anunciarão a venda de diversos produtos.
 
@@ -18,7 +18,7 @@ O cliente mantém-se no sistema até conseguir comprar todos os produtos que pre
 
 Toda a explicação e resultados desta análise pode ser consultada em https://github.com/luisnmartins/feup-aiad/blob/master/projeto_1/relatorio.pdf
 
-##Projeto 2
+## Projeto 2
 
 Para o segundo projeto foram gerados dados e feita uma análise à capacidade de previsão de diferentes modelos de data mining  baseando-se num dataset de aproximadamente 61000 linhas de dados de execução.
 
